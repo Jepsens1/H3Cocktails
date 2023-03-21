@@ -15,7 +15,7 @@ namespace H3Cocktails
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //Deletes from both Drink table and Ingredient table
+            //Delete from both Drink table and Ingredient table
             modelBuilder.Entity<Drink>()
                 .HasMany(a => a.Ingrediens)
                 .WithOne().OnDelete(DeleteBehavior.Cascade);
