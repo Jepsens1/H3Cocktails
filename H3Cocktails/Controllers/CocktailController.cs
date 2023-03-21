@@ -1,6 +1,5 @@
 ﻿using H3Cocktails.Handler;
 using H3Cocktails.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace H3Cocktails.Controllers
