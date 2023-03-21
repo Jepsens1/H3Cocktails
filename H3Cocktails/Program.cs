@@ -15,10 +15,13 @@ namespace H3Cocktails
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            //Adds the CocktailContext
             builder.Services.AddDbContext<CocktailContext>(options =>
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("CocktailContext"));
             });
+            //Add DrinkHandler to service collection, to use DI
             builder.Services.AddTransient<DrinkHandler>();
 
             var app = builder.Build();

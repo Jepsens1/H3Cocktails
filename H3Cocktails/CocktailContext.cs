@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Primitives;
 using H3Cocktails.Models;
+using System;
 
 namespace H3Cocktails
 {
@@ -10,7 +11,14 @@ namespace H3Cocktails
         {
 
         }
-
         public DbSet<Drink> Drinks { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //Deletes from both Drink table and Ingredient table
+            modelBuilder.Entity<Drink>()
+                .HasMany(a => a.Ingrediens)
+                .WithOne().OnDelete(DeleteBehavior.Cascade);
+        }
     }
 }

@@ -14,37 +14,42 @@ namespace H3Cocktails.Migrations
                 name: "Drinks",
                 columns: table => new
                 {
-                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Price = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Drinks", x => x.Name);
+                    table.PrimaryKey("PK_Drinks", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Ingrediens",
                 columns: table => new
                 {
-                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Amount = table.Column<double>(type: "float", nullable: false),
-                    DrinkName = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    DrinkId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Ingrediens", x => x.Name);
+                    table.PrimaryKey("PK_Ingrediens", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Ingrediens_Drinks_DrinkName",
-                        column: x => x.DrinkName,
+                        name: "FK_Ingrediens_Drinks_DrinkId",
+                        column: x => x.DrinkId,
                         principalTable: "Drinks",
-                        principalColumn: "Name");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Ingrediens_DrinkName",
+                name: "IX_Ingrediens_DrinkId",
                 table: "Ingrediens",
-                column: "DrinkName");
+                column: "DrinkId");
         }
 
         /// <inheritdoc />

@@ -19,7 +19,7 @@ namespace H3Cocktails.Controllers
         [Route("[action]")]
         [HttpGet]
         public async Task<ActionResult<List<Drink>>> GetDrinks()
-        {
+        { 
             var drinks = await _drinkHandler.GetAllDrinks();
             if(drinks == null)
             {
@@ -55,6 +55,17 @@ namespace H3Cocktails.Controllers
         public async Task<ActionResult<string>> DeleteDrink(string name)
         {
             var drink = await _drinkHandler.RemoveDrink(name);
+            if(drink == null)
+            {
+                return NotFound();
+            }
+            return Ok(drink);
+        }
+        [Route("[action]")]
+        [HttpPut]
+        public async Task<ActionResult<string>> UpdateDrink(string name,Drink d)
+        {
+            var drink = await _drinkHandler.UpdateDrink(name,d);
             if(drink == null)
             {
                 return NotFound();
