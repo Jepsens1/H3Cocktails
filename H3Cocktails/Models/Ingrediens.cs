@@ -6,7 +6,7 @@ namespace H3Cocktails.Models
 {
     public class Ingrediens
     {
-        //JsonIgnore prevents property to be serialize or deserialize, so when user adds new Drink, ID is not possible to set
+        //JsonIgnore prevents property to be serialize or deserialize, so when user adds new Drink, ID is not visible
         [JsonIgnore]
         //Sets the ID to primary key and auto increment
         [Key]
