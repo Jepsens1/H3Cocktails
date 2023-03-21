@@ -1,7 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Primitives;
-using H3Cocktails.Models;
-using System;
+﻿using H3Cocktails.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace H3Cocktails
 {
