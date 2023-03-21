@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace H3Cocktails.Migrations
 {
     [DbContext(typeof(CocktailContext))]
-    [Migration("20230321103148_Initialize")]
+    [Migration("20230321111413_Initialize")]
     partial class Initialize
     {
         /// <inheritdoc />

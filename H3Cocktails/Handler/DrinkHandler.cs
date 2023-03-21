@@ -84,14 +84,11 @@ namespace H3Cocktails.Handler
             {
                 return null;
             }
-            //This is a dumb way to update a Drink, because its removing and adding a new one
-            //Still working on fixing this
-
-            //Removes the old Drink
-            _context.Drinks.Remove(drink);
-            await _context.SaveChangesAsync();
-            //Adds the updated drink
-            _context.Drinks.Add(d);
+            //Sets the state to modified to let the context know than on or more property have changed
+            _context.Entry(drink).State = EntityState.Modified;
+            drink.Name = d.Name;
+            drink.Ingrediens = d.Ingrediens;
+            drink.Description = d.Description;
             await _context.SaveChangesAsync();
             return $"Updated {d.Name}";
         }
